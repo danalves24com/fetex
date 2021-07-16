@@ -2,13 +2,19 @@ export default [
 
     {
         name: "Force",
-        tex: "F = ma",
+        tex: "F = ma",        
         variables: [
-            ["m", "mass"],
-            ["a", "acceleration"]
+            {
+                sign: "m",
+                name: "mass"
+            },
+            {
+                sign: "a",
+                name: "acceleration"
+            }
         ],
-        return: ["Force", "F"],
-        compute: (m,a) => { return m*a }
+        return: ["force", "F"],
+        compute: function(v) { return v[0]*v[1] }
     }
 
 ]
