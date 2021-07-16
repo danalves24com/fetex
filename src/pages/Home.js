@@ -3,6 +3,7 @@ import { AddButton, Button1 } from '../components/Buttons.js'
 import { Entry, DropDown } from '../components/Misc.js'
 import { measures } from '../Data/Units.js';
 import $ from 'jquery'
+import { PhysicsEvaluator } from '../services/evaluator.js';
 var selected = [];
 class HomePage extends Component {
 
@@ -33,6 +34,8 @@ class HomePage extends Component {
         $("#givenAdd").val("")
     }
     compile() {
+        var pass = JSON.stringify([selected, $("#want").val()])
+        window.location.pathname = "/results/" + btoa(pass);
 
     }
     render() {
