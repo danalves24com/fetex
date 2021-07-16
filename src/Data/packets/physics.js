@@ -1,11 +1,7 @@
-# FETEX [EF-ET-EX]
-Given this I want that, Fetex can help you with that
+export default [
 
-
-## Equations structre
-```
-    {   
-	    name: "Force",
+    {
+        name: "Force",
         tex: "F = ma",
         variables: [
             ["m", "mass"],
@@ -13,6 +9,5 @@ Given this I want that, Fetex can help you with that
         ],
         compute: (m,a) => { return m*a }
     }
-```
 
-
+]
