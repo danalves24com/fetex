@@ -4,7 +4,7 @@ import Colors from "./Colors";
 class Entry extends Component {
     render() {
         return (
-            <input id={this.props.id} class="py-2 px-4 rounded border" style={{ borderColor: Colors.primary }}></input>
+            <input id={this.props.id} class="py-2 px-4 rounded border" style={{ borderColor: Colors.primary }} placeholder={this.props.placeholder}></input>
             );
     }
 }

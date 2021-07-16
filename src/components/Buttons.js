@@ -4,7 +4,7 @@ import Colors from './Colors'
 class Button1 extends Component {
     render() {
         return (
-            <button onClick={this.props.onClick} class="rounded m-2 px-7 py-2 text-xl text-white border" style={{ backgroundColor: Colors.primary, borderColor: Colors.secondary }}>{this.props.Text}</button>
+            <button onClick={this.props.onClick} class={"rounded m-2 px-7 py-2 text-xl text-white border"+this.props.class} style={{ backgroundColor: Colors.primary, borderColor: Colors.secondary }}>{this.props.Text}</button>
         );
     }
 }
