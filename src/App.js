@@ -4,7 +4,7 @@ function App() {
   return (
       <>
           <Router>
-              <Route exact path="/" component{}/>
+              <Route exact path="/" component{() => { return <></>}}/>
           </Router>
         </>
   );
