@@ -7,6 +7,7 @@ export default [
             ["m", "mass"],
             ["a", "acceleration"]
         ],
+        return: ["Force", "F"],
         compute: (m,a) => { return m*a }
     }
 
