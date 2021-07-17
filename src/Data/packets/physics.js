@@ -15,6 +15,6 @@ export default [
         ],
         return: ["force", "F"],
         compute: function(v) { return v[0]*v[1] }
-    }
+    }    
 
 ]

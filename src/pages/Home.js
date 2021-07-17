@@ -1,25 +1,30 @@
 import React, { Component } from 'react'
-import { AddButton, Button1 } from '../components/Buttons.js'
+import { AddButton, Button1, NavBarButton } from '../components/Buttons.js'
 import { Entry, DropDown } from '../components/Misc.js'
-import { measures } from '../Data/Units.js';
+import { physicsItems, statisticsItems } from '../Data/Units.js';
 import $ from 'jquery'
 import { PhysicsEvaluator } from '../services/evaluator.js';
+
 var selected = [];
 class HomePage extends Component {
 
     constructor(para) {
         super(para);
-    }
-    dropTemplate() {
-        return (<DropDown Id="given" Items={measures}></DropDown>);
-    }
-    componentDidMount() {
-        $("#given").change(() => {
-            console.log("new")
-            $("#add").remove();
-            $("#givens").html(this.dropTemplate());
-            $("#givens").append(<AddButton Id="add"></AddButton>)
-        });
+        switch (para.match.params.or) {
+            case "physics":
+                this.state = physicsItems
+                break;
+            case "statistics":
+                this.state = statisticsItems
+                break;
+            case "math":
+                this.state = physicsItems
+                break;
+            default:
+                this.state = physicsItems
+                break;
+        }
+        console.log();
     }
     add() {
         var g = $("#givenAdd").val();
@@ -42,13 +47,18 @@ class HomePage extends Component {
 
         return (
             <>
+                <div>
+                    <NavBarButton onClick={() => { window.location.pathname = "/statistics" }} live={this.props.match.params.or == "statistics"} Text="Statistics"></NavBarButton>
+                    <NavBarButton onClick={() => { window.location.pathname = "/physics" }} live={this.props.match.params.or == "physics"} Text="Physics"></NavBarButton>
+                    <NavBarButton onClick={() => { window.location.pathname = "/math" }} live={this.props.match.params.or == "math"} Text="Math"></NavBarButton>
+                </div>
                 <div style={{ marginTop: '30vh' }}>
                     <center>
                         <div class="flex" style={{ marginLeft: '15vw', marginRight: '15vw' }}>
                             <div class="w-2/3">
                                 <div class="grid  grid-cols-3 border-b my-8 p-3">
                                     <h2 class="flex items-center justify-center">Given</h2>
-                                    <DropDown id="givenAdd" Items={measures}></DropDown>
+                                    <DropDown id="givenAdd" Items={this.state}></DropDown>
                                     <Button1 onClick={ this.add } Text="Add"></Button1>
                                 </div>
                                 <div id="alert">Your given's will appear here</div>
@@ -59,7 +69,7 @@ class HomePage extends Component {
                             <div class="flex items-center justify-center w-1/3">
                                 <center>
                                     <h2 class="flex items-center justify-center">I want</h2>
-                                    <DropDown id="want" Items={measures}></DropDown>
+                                    <DropDown id="want" Items={this.state}></DropDown>
                                 </center>
                             </div>
                         </div>

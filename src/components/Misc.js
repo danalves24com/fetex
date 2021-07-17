@@ -10,6 +10,10 @@ class Entry extends Component {
 }
 
 class DropDown extends Component {
+    constructor(pass) {
+        super(pass);
+        console.log(this.props.Items);
+    }
     render() {
         return (
             <select id={this.props.id} class="rounded m-2 p-2 ring ring-green-400 focus:ring-green-600 focus:ring-4" style={{ opacity: 1 }}>

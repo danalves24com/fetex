@@ -13,7 +13,17 @@ class AddButton extends Component {
         return (<button id={this.props.Id} class="rounded mx-6 border border-black text-black text-xl" style={{ opacity: 0.5 }}>+</button>)
     }
 }
+class NavBarButton extends Component {
+
+    render() {
+        return (
+            <button class={"mx-5 my-2 border-b border-gray-500 px-2 py-1 " + (this.props.live ? "border-green-500 " : "")} onClick={this.props.onClick}>{this.props.Text}</button>
+            );
+    }
+
+}
 export {
     Button1,
-    AddButton
+    AddButton,
+    NavBarButton
 }

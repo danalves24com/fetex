@@ -1,9 +1,16 @@
-var measures = [
+var physicsItems = [
+    "force",
     "mass",
-    "acceleration",
-    "force"
+    "acceleration"
+]
+var statisticsItems = [
+    "standard deviation",
+    "mean",
+    "sample size"
 ]
 
+
 export {
-    measures
+    physicsItems,
+    statisticsItems,
 }
