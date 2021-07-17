@@ -6,7 +6,8 @@ var physicsItems = [
 var statisticsItems = [
     "standard deviation",
     "mean",
-    "sample size"
+    "sample size",
+    "variance"
 ]
 
 

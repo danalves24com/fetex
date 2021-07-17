@@ -7,7 +7,7 @@ function App() {
       <>
           <Router>
               <Route exact path="/:or?" component={HomePage} />
-              <Route exact path="/results/:data" component={Result} />
+              <Route exact path="/results/:data/:reg" component={Result} />
           </Router>
         </>
   );
