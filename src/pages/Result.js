@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { PhysicsEvaluator } from "../services/evaluator";
+import { PhysicsEvaluator, StatisticsEvluator } from "../services/evaluator";
 import 'katex/dist/katex.min.css'
 import Latex from 'react-latex-next';
 import $ from 'jquery'
@@ -10,7 +10,15 @@ class Result extends Component {
     constructor(p) {
         super(p);
         dataPass = JSON.parse(atob(this.props.match.params.data));        
-        var evalD = new PhysicsEvaluator();
+        var evalD;
+        switch (this.props.match.params.reg) {
+            case "statistics":
+                evalD = new StatisticsEvluator();
+                break;
+            case "physics":
+                evalD = new PhysicsEvaluator();
+                break;
+        }
         var r = evalD.evaluate(dataPass[0], dataPass[1]);
         res = r;
         this.state = r;

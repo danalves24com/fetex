@@ -5,11 +5,12 @@ import { physicsItems, statisticsItems } from '../Data/Units.js';
 import $ from 'jquery'
 import { PhysicsEvaluator } from '../services/evaluator.js';
 
-var selected = [];
+var selected = [], type;
 class HomePage extends Component {
 
     constructor(para) {
         super(para);
+        type = para.match.params.or;
         switch (para.match.params.or) {
             case "physics":
                 this.state = physicsItems
@@ -22,6 +23,7 @@ class HomePage extends Component {
                 break;
             default:
                 this.state = physicsItems
+                type="physics"
                 break;
         }
         console.log();
@@ -40,7 +42,7 @@ class HomePage extends Component {
     }
     compile() {
         var pass = JSON.stringify([selected, $("#want").val()])
-        window.location.pathname = "/results/" + btoa(pass);
+        window.location.pathname = "/results/" + btoa(pass) + "/" + type;
 
     }
     render() {
