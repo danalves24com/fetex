@@ -6,6 +6,16 @@ import $ from 'jquery'
 import { Entry } from "../components/Misc";
 import { Button1 } from "../components/Buttons";
 var dataPass = "", res = [];
+function cleanSign(sign) {
+    var bad = ["\\", "{", "}", "^", "*"];
+    for (var b in bad) {
+        b = bad[b];
+        while (sign.indexOf(b) >= 0) {
+            sign = sign.replace(b, "");
+        }
+    }
+    return sign;
+}
 class Result extends Component {
     constructor(p) {
         super(p);
@@ -25,13 +35,15 @@ class Result extends Component {
         console.log(r);
     }
     calculate() {
+
         var vec = [];
         for (var vv in res.variables) {
             vv = res.variables[vv];
-            vec.push($(`#${vv.sign}`).val());
+            vec.push($(`#${cleanSign(vv.sign)}`).val());
         }
         $("#res").html(res.compute(vec))
     }
+
     componentDidMount() {
     }
     render() {
@@ -50,7 +62,7 @@ class Result extends Component {
                             <h3 class="text-2xl border-b border-gray-600 py-2 m-2">Variables:</h3>
                             <ul>
                                 {this.state.variables.map((v) => {
-                                    return <h4><b>{ v.sign }</b> = { v.name}</h4>
+                                    return <h4><Latex>{ "$"+v.sign+"$" }</Latex> = { v.name}</h4>
                                 })}
                             </ul>
                         </div>
@@ -64,7 +76,7 @@ class Result extends Component {
                                 {this.state.variables.map((v) => {
                                     return (
                                         <div class="m-5">
-                                            <Entry placeholder={v.name} id={ v.sign}></Entry>
+                                            <Entry type="number" placeholder={v.name} id={cleanSign(v.sign)}></Entry>
                                         </div>
                                     )
                                 })}
