@@ -11,15 +11,15 @@ Given this I want that, Fetex can help you with that
         variables: [
             {
                 sign: "m",
-                name: "mass"
+                name: "mass",                
             },
             {
                 sign: "a",
                 name: "acceleration"
             }
         ],
-        return: ["force", "F"],
-        compute: function(v) { return v[0]*v[1] }
+        return: [physicsRef().force, "F"],
+        compute: function (v) { return v[0] * v[1] + physicsLegend.force }
     }
 ```
 
