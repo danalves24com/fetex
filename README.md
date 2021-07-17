@@ -1,6 +1,7 @@
 # FETEX [EF-ET-EX]
 Given this I want that, Fetex can help you with that
 
+!much refactoring coming soon!
 
 ## Equations structre
 ```
@@ -24,4 +25,4 @@ Given this I want that, Fetex can help you with that
 
 
 ## How to contribute?
-if you would like to add an equation to Fetex, simply go to src/Data/packets and select the field. In the file of your field enter the equation in the format mentioned above.
+If you would like to add an equation to Fetex, simply go to src/Data/packets and select the field. In the file of your field enter the equation in the format mentioned above.
