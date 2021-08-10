@@ -61,6 +61,22 @@ export default [
         ],
         return: [physicsRef().thrust, "F"],
         compute: (v) => { return (v[0] * v[1] + (v[2] - v[3]) * v[4]) + physicsLegend.thrust }
+    },
+        {
+        name: "Projectile Motion Height",
+        tex: "F = \\frac{v^{2}*sin^{2}(\\theta)}{2g}",        
+        variables: [
+            {
+                sign: "v",
+                name: "velocity"
+            },
+            {
+                sign: "\\theta",
+                name: "angle in radians"
+            }
+        ],
+        return: [physicsRef().force, "F"],
+        compute: function (v) { return ((Math.pow(v[0],2)*Math.pow(Math.sin(v[1],2)))/(2*9.8)) + physicsLegend.force }
     }
 
 ]
