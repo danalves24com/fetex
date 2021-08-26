@@ -20,11 +20,11 @@ export default
             tex: "\\temp",
             variables: [
                 {
-                    sign: "μ",
+                    sign: "\\mu",
                     name: "Population Mean"
                 }
             ],
-            return: ["Population Mean", "μ"],
+            return: ["Population Mean", "\\mu"],
             compute: function (v) {
                 let l = v.split(" ").map((x) => {return parseInt(x, 10)})
                 function getMean() {
