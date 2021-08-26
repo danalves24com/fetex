@@ -5,6 +5,8 @@ import Latex from 'react-latex-next';
 import $ from 'jquery'
 import { Entry } from "../components/Misc";
 import { Button1 } from "../components/Buttons";
+import Navbar from "../components/Navbar.js"
+
 var dataPass = "", res = [];
 function cleanSign(sign) {
     var bad = ["\\", "{", "}", "^", "*"];
@@ -19,7 +21,7 @@ function cleanSign(sign) {
 class Result extends Component {
     constructor(p) {
         super(p);
-        dataPass = JSON.parse(atob(this.props.match.params.data));        
+        dataPass = JSON.parse(atob(this.props.match.params.data));
         var evalD;
         switch (this.props.match.params.reg) {
             case "statistics":
@@ -49,7 +51,11 @@ class Result extends Component {
     render() {
         return (
             <>
-
+            <div>
+                <Navbar onClick={() => { window.location.pathname = "/statistics" }} text="Statistics" />
+                <Navbar onClick={() => { window.location.pathname = "/physics" }} text="Physics" />
+                <Navbar onClick={() => { window.location.pathname = "/math" }} text="Math" />
+            </div>
                 <div>
                     <h1 class="text-center text-5xl m-10 tracking-widest">{this.state.name}</h1>
                 </div>
@@ -85,12 +91,12 @@ class Result extends Component {
                                 </center>
                             </div>
                             <div class="mx-5 flex items-center justify-center" id="res">
-                               
+
                             </div>
                         </div>
                     </div>
                 </div>
-              
+
 
                 </>
             );

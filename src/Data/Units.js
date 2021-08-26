@@ -12,10 +12,11 @@ var physicsLegend = {
 
 }
 var statisticsItems = [
-    "standard deviation",
-    "mean",
-    "sample size",
-    "variance"
+    "Standard Deviation",
+    "Mean",
+    "Sample Size",
+    "Variance",
+    "Dataset",
 ]
 
 

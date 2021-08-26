@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { AddButton, Button1, NavBarButton } from '../components/Buttons.js'
+import { AddButton, Button1 } from '../components/Buttons.js'
 import { Entry, DropDown } from '../components/Misc.js'
 import { physicsItems, statisticsItems, physicsRef } from '../Data/Units.js';
 import $ from 'jquery'
 import { PhysicsEvaluator } from '../services/evaluator.js';
 import physics from '../Data/packets/physics.js';
 import statistics from '../Data/packets/statistics.js';
+import Navbar from "../components/Navbar.js"
 
 var selected = [], type;
 function avalible(all) {
@@ -50,7 +51,7 @@ class HomePage extends Component {
     add() {
         var g = $("#givenAdd").val();
         $("#alert").hide();
-        if (!selected.includes(g)) {            
+        if (!selected.includes(g)) {
             $("#givens").append(`<h3 class="text-center border rounded m-2 p-2">${g}</h3>`)
             selected.push(g);
         }
@@ -59,7 +60,7 @@ class HomePage extends Component {
         }
         $("#givenAdd").val("")
     }
-    
+
     compile() {
         var pass = JSON.stringify([selected, $("#want").val()])
         window.location.pathname = "/results/" + btoa(pass) + "/" + type;
@@ -70,9 +71,9 @@ class HomePage extends Component {
         return (
             <>
                 <div>
-                    <NavBarButton onClick={() => { window.location.pathname = "/statistics" }} live={this.props.match.params.or == "statistics"} Text="Statistics"></NavBarButton>
-                    <NavBarButton onClick={() => { window.location.pathname = "/physics" }} live={this.props.match.params.or == "physics"} Text="Physics"></NavBarButton>
-                    <NavBarButton onClick={() => { window.location.pathname = "/math" }} live={this.props.match.params.or == "math"} Text="Math"></NavBarButton>
+                    <Navbar onClick={() => { window.location.pathname = "/statistics" }} text="Statistics" />
+                    <Navbar onClick={() => { window.location.pathname = "/physics" }} text="Physics" />
+                    <Navbar onClick={() => { window.location.pathname = "/math" }} text="Math" />
                 </div>
                 <div style={{ marginTop: '30vh' }}>
                     <center>
@@ -85,7 +86,7 @@ class HomePage extends Component {
                                 </div>
                                 <div id="alert">Your given's will appear here, but you do not need to select them</div>
                                 <div class="grid grid-cols-4" id="givens">
-                                    
+
                                 </div>
                             </div>
                             <div class="flex items-center justify-center w-1/3">
